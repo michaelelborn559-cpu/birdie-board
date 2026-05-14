@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Birdie Board 2026 — Revelstoke Golf Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#07100a;--bg2:#0b180d;--surface:#102014;--card:#142818;--border:#1c3820;--green:#2a7232;--bright:#38a044;--glow:#52cc5a;--gold:#c8a44a;--gold2:#e6c460;--cream:#f0ead8;--muted:#6a8a6a;--text:#c8c0b0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;line-height:1.6;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,16,10,0.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,164,74,0.18);transition:border-color 0.3s;}
+nav.scrolled{border-bottom-color:rgba(200,164,74,0.38);}
+.logo{font-family:'Playfair Display',serif;font-size:19px;font-weight:900;color:var(--cream);}
+.logo b{color:var(--gold);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nbtn{background:var(--gold);color:#060800;padding:9px 22px;border-radius:2px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
+.nbtn:hover{background:var(--gold2);}
+@media(max-width:700px){.nav-links{display:none;}nav{padding:14px 20px;}}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden;}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(42,114,50,0.22) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 15% 85%,rgba(200,164,74,0.07) 0%,transparent 55%);pointer-events:none;}
+.hgridl{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(42,114,50,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(42,114,50,0.07) 1px,transparent 1px);background-size:64px 64px;animation:gm 22s linear infinite;}
+@keyframes gm{0%{transform:translate(0,0);}100%{transform:translate(64px,64px);}}
+.eye{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;opacity:0;animation:ri 0.8s ease 0.15s forwards;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(56px,11vw,118px);font-weight:900;line-height:0.9;color:var(--cream);margin-bottom:10px;opacity:0;animation:ri 0.9s ease 0.35s forwards;}
+.hero h1 i{font-style:italic;color:var(--gold);display:block;}
+.hsub{font-size:clamp(17px,2.4vw,23px);color:var(--muted);font-style:italic;margin:28px 0 52px;max-width:500px;opacity:0;animation:ri 0.8s ease 0.55s forwards;}
+.hbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:ri 0.8s ease 0.75s forwards;}
+.btng{background:var(--gold);color:#060800;padding:15px 38px;border-radius:2px;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;text-decoration:none;border:2px solid var(--gold);transition:all 0.25s;display:inline-block;}
+.btng:hover{background:transparent;color:var(--gold);}
+.btngh{color:var(--muted);padding:15px 38px;border-radius:2px;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.07em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border);transition:all 0.25s;display:inline-block;}
+.btngh:hover{border-color:var(--muted);color:var(--cream);}
+@keyframes ri{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.hstats{margin-top:72px;display:flex;border:1px solid var(--border);border-radius:4px;overflow:hidden;opacity:0;animation:ri 0.8s ease 1s forwards;background:rgba(16,32,20,0.6);backdrop-filter:blur(8px);}
+.stat{padding:22px 36px;text-align:center;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.sn{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;color:var(--gold);line-height:1;}
+.sl{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:5px;}
+@media(max-width:500px){.hstats{flex-direction:column;}.stat{border-right:none;border-bottom:1px solid var(--border);}.stat:last-child{border-bottom:none;}}
+.tko{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);padding:11px 0;}
+.tkt{display:flex;white-space:nowrap;animation:ta 32s linear infinite;}
+.tki{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);padding:0 44px;border-right:1px solid var(--border);letter-spacing:0.06em;}
+.tki b{color:var(--gold2);font-weight:400;}
+@keyframes ta{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.rev{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.rev.show{opacity:1;transform:translateY(0);}
+.rev.d1{transition-delay:0.1s;}.rev.d2{transition-delay:0.2s;}.rev.d3{transition-delay:0.3s;}.rev.d4{transition-delay:0.4s;}
+.seye{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.sti{font-family:'Playfair Display',serif;font-size:clamp(34px,5.5vw,60px);font-weight:900;line-height:1.06;color:var(--cream);margin-bottom:20px;}
+.sti i{font-style:italic;color:var(--glow);}
+.sbd{font-size:clamp(16px,1.8vw,19px);font-weight:300;color:var(--muted);line-height:1.75;max-width:520px;}
+.sc{max-width:1180px;margin:0 auto;padding:100px 40px;}
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.srow.fl{direction:rtl;}.srow.fl>*{direction:ltr;}
+@media(max-width:800px){.srow{grid-template-columns:1fr;gap:48px;}.srow.fl{direction:ltr;}.sc{padding:60px 24px;}}
+.po{display:flex;justify-content:center;position:relative;}
+.po::before{content:'';position:absolute;inset:-50px;background:radial-gradient(ellipse at center,rgba(42,114,50,0.16) 0%,transparent 70%);pointer-events:none;}
+.phone{width:255px;height:510px;border-radius:38px;border:2px solid rgba(255,255,255,0.1);background:#080f0a;position:relative;overflow:hidden;box-shadow:0 48px 96px rgba(0,0,0,0.65),0 0 0 1px rgba(255,255,255,0.04);animation:bob 7s ease-in-out infinite;}
+.phone.off{animation-delay:2s;}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-0.8deg);}50%{transform:translateY(-18px) rotate(0.8deg);}}
+.phone::before{content:'';position:absolute;top:11px;left:50%;transform:translateX(-50%);width:78px;height:22px;border-radius:11px;background:#000;z-index:20;box-shadow:0 0 0 2px rgba(255,255,255,0.07);}
+.ps{position:absolute;inset:0;padding-top:44px;display:flex;flex-direction:column;font-family:'DM Mono',monospace;}
+.ph{padding:7px 12px 5px;background:linear-gradient(180deg,#0d260f,#080f0a);border-bottom:1px solid #182a1a;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.pht{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;color:#f0ead8;}
+.phs,.phr{font-size:7.5px;color:#4a6a4a;}
+.ptabs{display:flex;overflow-x:auto;background:#0e1e10;border-bottom:1px solid #182a1a;flex-shrink:0;}
+.ptab{padding:5.5px 9px;font-size:7px;color:#4a6a4a;white-space:nowrap;flex-shrink:0;border-bottom:2px solid transparent;}
+.ptab.on{color:#52cc5a;border-bottom-color:#38a044;}
+.pb{flex:1;padding:9px;overflow:hidden;}
+.hg{display:grid;grid-template-columns:repeat(6,1fr);gap:3.5px;margin-bottom:9px;}
+.hc{aspect-ratio:1;border-radius:3.5px;border:1px solid #1c3820;background:#0e1e10;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:5.5px;color:#4a6a4a;transition:all 0.4s;}
+.hc.dn{background:#2a7232;border-color:#38a044;color:#f0ead8;}
+.hc.dn .hi{font-size:9px;}
+.hc.eg{background:#18083a;border-color:#9060d0;color:#b080e8;}
+.pp{margin-bottom:7px;}
+.ppn{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:#f0ead8;line-height:1;}
+.ppl{font-size:7px;color:#4a6a4a;margin-top:1px;}
+.ppb{height:2.5px;background:#1c3820;border-radius:2px;margin-top:5px;}
+.ppf{height:100%;border-radius:2px;background:#38a044;}
+.phc{background:linear-gradient(135deg,#0e1e10,#181408);border:1px solid #c8a44a;border-radius:4.5px;padding:7px;margin-bottom:7px;}
+.phcl{font-size:6.5px;color:#4a6a4a;letter-spacing:0.07em;margin-bottom:2px;}
+.phcv{font-family:'Playfair Display',serif;font-size:19px;font-weight:900;color:#c8a44a;line-height:1;}
+.phcs{font-size:6.5px;color:#6a8a6a;margin-top:1.5px;}
+.pfc{background:#142818;border:1px solid #1c3820;border-radius:4.5px;padding:6.5px;margin-bottom:4.5px;}
+.pfr{display:flex;align-items:center;gap:5.5px;margin-bottom:4px;}
+.pav{width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:700;color:#f0ead8;flex-shrink:0;}
+.pfn{font-size:7.5px;font-weight:700;color:#f0ead8;}
+.pfc2{font-size:6.5px;color:#4a6a4a;}
+.pfs{margin-left:auto;padding:1.5px 5px;border-radius:8px;font-size:7px;font-weight:700;}
+.pfs.un{background:#2a7232;border:1px solid #38a044;color:#f0ead8;}
+.pfs.ov{background:#2a1010;border:1px solid #5a2020;color:#c07070;}
+.pbdg{display:flex;gap:3px;flex-wrap:wrap;}
+.pbg{padding:1.5px 5px;border-radius:7px;font-size:6.5px;}
+.pbg.bb{background:#2a7232;border:1px solid #38a044;color:#f0ead8;}
+.pbg.bn{background:#201800;border:1px solid #c8a44a;color:#c8a44a;}
+.pbg.be{background:#18083a;border:1px solid #9060d0;color:#b080e8;}
+.pbg.bf{background:#2a1008;border:1px solid #c06028;color:#d08050;}
+.plbr{display:flex;align-items:center;gap:5.5px;background:#142818;border:1px solid #1c3820;border-radius:3.5px;padding:5.5px 7px;margin-bottom:3.5px;}
+.plbr.me{background:linear-gradient(90deg,#162c18,#142818);border-color:#2a7232;}
+.plbrk{font-size:8px;color:#4a6a4a;width:13px;text-align:center;}
+.plbn{flex:1;}
+.plbnn{font-size:7.5px;font-weight:700;color:#f0ead8;}
+.plbnk{font-size:6.5px;color:#c8a44a;}
+.plbsc{font-family:'Playfair Display',serif;font-size:13px;font-weight:900;color:#f0ead8;}
+.plbbw{width:24px;height:24px;display:flex;align-items:flex-end;}
+.plbbf{width:100%;background:#2a7232;border-radius:1px 1px 0 0;}
+.pbcard{border:1px solid #1c3820;border-radius:4.5px;overflow:hidden;margin-bottom:5.5px;}
+.pbdv{font-size:7px;color:#c8a44a;letter-spacing:0.1em;padding:4px 8px;display:flex;align-items:center;gap:5px;background:#0e1408;}
+.pbdv::before,.pbdv::after{content:'';flex:1;height:1px;background:rgba(200,164,74,0.28);}
+.pbpl{display:flex;align-items:center;gap:7px;padding:6.5px 9px;border-bottom:1px solid #1c3820;}
+.pbpl:last-child{border-bottom:none;}
+.pbpn{flex:1;font-size:7.5px;font-weight:700;color:#f0ead8;}
+.pbpr{display:flex;align-items:center;gap:3.5px;}
+.pbpb{width:38px;height:2.5px;background:#1c3820;border-radius:2px;}
+.pbpf{height:100%;border-radius:2px;background:#38a044;}
+.pbnum{font-size:8.5px;font-weight:900;color:#f0ead8;font-family:'Playfair Display',serif;min-width:21px;text-align:right;}
+.plk{background:#181408;border:1px solid #c8a44a;border-radius:3.5px;padding:4.5px 7px;margin-bottom:6px;font-size:6.5px;color:#c8a44a;text-align:center;}
+.cps{padding:100px 40px;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(200,164,74,0.05) 0%,transparent 60%);}
+.cpi{max-width:1100px;margin:0 auto;}
+.cpg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px;}
+@media(max-width:800px){.cpg{grid-template-columns:1fr;}.cps{padding:60px 24px;}}
+.cpc{border:1px solid var(--border);border-radius:4px;padding:32px 26px;background:linear-gradient(145deg,var(--card),var(--bg2));position:relative;transition:all 0.3s;overflow:hidden;}
+.cpc:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,0.45);}
+.cpc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.cpc.c1::before{background:linear-gradient(90deg,var(--glow),var(--green));}
+.cpc.c1:hover{border-color:var(--green);}
+.cpc.c2::before{background:linear-gradient(90deg,var(--gold),var(--gold2));}
+.cpc.c2:hover{border-color:var(--gold);}
+.cpc.c3::before{background:linear-gradient(90deg,#b06ae0,#7040a0);}
+.cpc.c3:hover{border-color:#9060c0;}
+.cicon{font-size:38px;margin-bottom:18px;}
+.ctit{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;color:var(--cream);margin-bottom:11px;}
+.cdesc{font-size:16px;font-weight:300;color:var(--muted);line-height:1.72;margin-bottom:20px;}
+.cpill{display:inline-block;padding:4px 13px;border-radius:2px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;}
+.pg{background:rgba(42,114,50,0.2);color:var(--glow);border:1px solid rgba(56,160,68,0.3);}
+.pa{background:rgba(200,164,74,0.14);color:var(--gold);border:1px solid rgba(200,164,74,0.3);}
+.pp2{background:rgba(176,106,224,0.14);color:#c090f0;border:1px solid rgba(176,106,224,0.3);}
+.nks{padding:100px 40px;}
+.nki{max-width:1100px;margin:0 auto;}
+.nkrow{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+@media(max-width:800px){.nkrow{grid-template-columns:1fr;gap:40px;}.nks{padding:60px 24px;}}
+.nkcard{background:linear-gradient(145deg,var(--card),#100c00);border:1px solid var(--gold);border-radius:8px;padding:36px 32px;position:relative;overflow:hidden;}
+.nkcard::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(200,164,74,0.08) 0%,transparent 60%);pointer-events:none;}
+.nklbl{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:14px;}
+.nkname{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--gold);line-height:1.1;margin-bottom:20px;min-height:40px;transition:opacity 0.4s;}
+.nkdiv{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin-bottom:18px;}
+.nkwhy{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;}
+.nkreason{font-size:15px;font-style:italic;color:var(--text);line-height:1.7;min-height:68px;transition:opacity 0.4s;}
+.nkai{margin-top:20px;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-align:center;}
+.fts{padding:100px 40px;background:linear-gradient(180deg,transparent,rgba(16,32,20,0.3),transparent);}
+.fti{max-width:1100px;margin:0 auto;}
+.ftg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px;}
+@media(max-width:600px){.ftg{grid-template-columns:1fr;}.fts{padding:60px 24px;}}
+.fti2{padding:26px;border:1px solid var(--border);border-radius:4px;background:var(--card);display:flex;gap:16px;align-items:flex-start;transition:all 0.3s;}
+.fti2:hover{border-color:var(--green);background:var(--surface);transform:translateY(-2px);}
+.ftic{font-size:26px;flex-shrink:0;margin-top:2px;}
+.ftit{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--cream);margin-bottom:7px;}
+.ftd{font-size:15px;font-weight:300;color:var(--muted);line-height:1.65;}
+.hws{padding:100px 40px;text-align:center;}
+.hwi{max-width:920px;margin:0 auto;}
+.hwst{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:56px;position:relative;}
+.hwst::before{content:'';position:absolute;top:26px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--border),var(--bright),var(--border),transparent);}
+@media(max-width:600px){.hwst{grid-template-columns:repeat(2,1fr);}.hwst::before{display:none;}.hws{padding:60px 24px;}}
+.hwsi{padding:0 12px;}
+.hwsn{width:52px;height:52px;border-radius:50%;background:var(--card);border:1px solid var(--bright);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold);margin:0 auto 18px;}
+.hwsit{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--cream);margin-bottom:8px;}
+.hwsid{font-size:14px;color:var(--muted);line-height:1.55;}
+.ctasec{padding:120px 40px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 75% 55% at 50% 100%,rgba(42,114,50,0.16) 0%,transparent 65%);}
+.ctabg{position:absolute;font-size:380px;opacity:0.018;top:50%;left:50%;transform:translate(-50%,-55%);pointer-events:none;}
+.ctatit{font-family:'Playfair Display',serif;font-size:clamp(42px,7.5vw,84px);font-weight:900;line-height:0.95;color:var(--cream);margin-bottom:22px;}
+.ctatit i{font-style:italic;color:var(--gold);}
+.ctasub{font-size:19px;font-style:italic;color:var(--muted);margin-bottom:52px;}
+.ctanote{margin-top:22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.05em;}
+footer{padding:36px 40px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.flogo{font-family:'Playfair Display',serif;font-size:16px;font-weight:900;color:var(--muted);}
+.flogo b{color:var(--gold);}
+.fcopy{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.05em;}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="logo">Birdie <b>Board</b></div>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#comps">Competitions</a></li>
+    <li><a href="#feats">Features</a></li>
+    <li><a href="/app">Login</a></li>
+    <li><a href="#signup" class="nbtn">Sign Up</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hbg"></div>
+  <div class="hgridl"></div>
+  <div class="eye">Revelstoke Golf Club &middot; Season 2026</div>
+  <h1>The<br/><i>Birdie Board.</i></h1>
+  <p class="hsub">18 holes stand between you and glory. Good luck.</p>
+  <div class="hbtns">
+    <a href="#signup" class="btng">Sign Up for Season 2026</a>
+    <a href="#how" class="btngh">How it works</a>
+  </div>
+  <div style="margin-top:16px;opacity:0;animation:ri 0.8s ease 0.95s forwards;">
+    <a href="/app" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.08em;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">Already signed up? Log in here &rarr;</a>
+  </div>
+  <div class="hstats">
+    <div class="stat"><div class="sn" id="c1">0</div><div class="sl">Players Signed Up</div></div>
+    <div class="stat"><div class="sn" id="c2">0</div><div class="sl">Holes Birdied</div></div>
+    <div class="stat"><div class="sn" id="c3">0</div><div class="sl">Rounds Logged</div></div>
+  </div>
+</section>
+
+<div class="tko">
+  <div class="tkt">
+    <div class="tki"><b>The Fairway Phantom</b> birdied Hole 7 at Revelstoke &mdash; 9/18 on the board!</div>
+    <div class="tki"><b>Captain Clutch</b> is ON FIRE &mdash; 4 birdies in one round!</div>
+    <div class="tki"><b>El Condor Grande</b> net birdie on Hole 12 &#11088;</div>
+    <div class="tki"><b>The Green Reaper</b> eagled Hole 10 at Revelstoke!</div>
+    <div class="tki"><b>Wild Bill Wedge</b> completed the board &mdash; Bracket 2 winner!</div>
+    <div class="tki"><b>Three-Putt Terrance</b> birdied Hole 5 &mdash; hardest on the course</div>
+    <div class="tki"><b>Bogey Banisher</b> is the Hot Hand &mdash; 11 birdies in last 3 rounds</div>
+    <div class="tki"><b>The Fairway Phantom</b> birdied Hole 7 at Revelstoke &mdash; 9/18 on the board!</div>
+    <div class="tki"><b>Captain Clutch</b> is ON FIRE &mdash; 4 birdies in one round!</div>
+    <div class="tki"><b>El Condor Grande</b> net birdie on Hole 12 &#11088;</div>
+    <div class="tki"><b>The Green Reaper</b> eagled Hole 10 at Revelstoke!</div>
+    <div class="tki"><b>Wild Bill Wedge</b> completed the board &mdash; Bracket 2 winner!</div>
+    <div class="tki"><b>Three-Putt Terrance</b> birdied Hole 5 &mdash; hardest on the course</div>
+    <div class="tki"><b>Bogey Banisher</b> is the Hot Hand &mdash; 11 birdies in last 3 rounds</div>
+  </div>
+</div>
+
+<div class="sc">
+  <div class="srow">
+    <div class="po rev">
+      <div class="phone">
+        <div class="ps">
+          <div class="ph"><div><div class="pht">Birdie Board</div><div class="phs">Season 2026</div></div><div class="phr">Michael</div></div>
+          <div class="ptabs"><div class="ptab on">My Board</div><div class="ptab">Net</div><div class="ptab">Brackets</div><div class="ptab">Log</div></div>
+          <div class="pb">
+            <div class="phc"><div class="phcl">MY HANDICAP INDEX</div><div class="phcv">12.4</div><div class="phcs">Course HCP 14 at Revelstoke</div></div>
+            <div class="pp"><div class="ppn">11</div><div class="ppl">/ 18 holes birdied</div><div class="ppb"><div class="ppf" style="width:61%"></div></div></div>
+            <div class="hg" id="hgrid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="seye rev d1">Your Personal Board</div>
+      <h2 class="sti rev d2">Every hole.<br/><i>Your progress.</i></h2>
+      <p class="sbd rev d3">Your personal 18-hole grid tracks every birdie across every round at Revelstoke. Holes light up green as you tick them off. Update your handicap index yourself &mdash; course handicap and stroke holes calculate automatically.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sc" style="padding-top:0">
+  <div class="srow fl">
+    <div>
+      <div class="seye rev d1">Group Feed</div>
+      <h2 class="sti rev d2">Every birdie.<br/><i>Everyone sees it.</i></h2>
+      <p class="sbd rev d3">A live feed of every round logged by the whole group. Score to par, eagle alerts, birdie breakdowns &mdash; and a one-tap button to copy a pre-written message straight into Messenger.</p>
+    </div>
+    <div class="po rev">
+      <div class="phone off">
+        <div class="ps">
+          <div class="ph"><div><div class="pht">Birdie Board</div></div></div>
+          <div class="ptabs"><div class="ptab">My Board</div><div class="ptab">Net</div><div class="ptab">Brackets</div><div class="ptab on">Feed</div></div>
+          <div class="pb">
+            <div class="pfc"><div class="pfr"><div class="pav" style="background:#2a7232;border:1px solid #38a044">M</div><div><div class="pfn">The Fairway Phantom</div><div class="pfc2">Michael &middot; Revelstoke &middot; Today</div></div><div class="pfs un">-3 &middot; 18H</div></div><div class="pbdg"><span class="pbg bb">3 birdies</span><span class="pbg bn">1 net</span></div></div>
+            <div class="pfc"><div class="pfr"><div class="pav" style="background:#1a083a;border:1px solid #8050c0">J</div><div><div class="pfn">El Condor Grande</div><div class="pfc2">Jake &middot; Revelstoke &middot; Yesterday</div></div><div class="pfs un">-1 &middot; 18H</div></div><div class="pbdg"><span class="pbg be">Eagle H10</span><span class="pbg bb">1 birdie</span></div></div>
+            <div class="pfc"><div class="pfr"><div class="pav" style="background:#1a2838;border:1px solid #4060a0">S</div><div><div class="pfn">Captain Three-Putt</div><div class="pfc2">Sam &middot; Revelstoke &middot; 2 days ago</div></div><div class="pfs ov">+4 &middot; 18H</div></div><div class="pbdg"><span class="pbg bf">4 birdies</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sc" style="padding-top:0">
+  <div class="srow">
+    <div class="po rev">
+      <div class="phone">
+        <div class="ps">
+          <div class="ph"><div><div class="pht">Birdie Board</div></div></div>
+          <div class="ptabs"><div class="ptab">My Board</div><div class="ptab on">Brackets</div><div class="ptab">Feed</div><div class="ptab">Standings</div></div>
+          <div class="pb">
+            <div class="plk">Draw locked &middot; First to birdie all 18 wins</div>
+            <div class="pbcard"><div class="pbdv">BRACKET 1</div><div class="pbpl" style="background:linear-gradient(90deg,#162c18,#142818)"><div class="pbpn" style="color:#52cc5a">Fairway Phantom</div><div class="pbpr"><div class="pbpb"><div class="pbpf" style="width:72%"></div></div><div class="pbnum" style="color:#52cc5a">13/18</div></div></div><div class="pbpl"><div class="pbpn">Captain Clutch</div><div class="pbpr"><div class="pbpb"><div class="pbpf" style="width:55%;background:#4a6a4a"></div></div><div class="pbnum">10/18</div></div></div></div>
+            <div class="pbcard"><div class="pbdv" style="color:#6ab0d4">BRACKET 2</div><div class="pbpl"><div class="pbpn">El Condor Grande</div><div class="pbpr"><div class="pbpb"><div class="pbpf" style="width:88%;background:#c8a44a"></div></div><div class="pbnum" style="color:#c8a44a">16/18</div></div></div><div class="pbpl"><div class="pbpn">Wild Bill Wedge</div><div class="pbpr"><div class="pbpb"><div class="pbpf" style="width:44%;background:#4a6a4a"></div></div><div class="pbnum">8/18</div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="seye rev d1">The Draw</div>
+      <h2 class="sti rev d2">Four brackets.<br/><i>One champion.</i></h2>
+      <p class="sbd rev d3">Players split into 4 handicap brackets. Matchups randomised live at the pub on draw night. The bracket locks in permanently &mdash; first to birdie all 18 holes beats their opponent. No excuses.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sc" style="padding-top:0">
+  <div class="srow fl">
+    <div>
+      <div class="seye rev d1">Standings</div>
+      <h2 class="sti rev d2">Know exactly<br/><i>where you stand.</i></h2>
+      <p class="sbd rev d3">Live leaderboard ranked by holes completed. Your nickname front and centre. The whole group can see exactly where everyone is &mdash; no hiding from the table.</p>
+    </div>
+    <div class="po rev">
+      <div class="phone off">
+        <div class="ps">
+          <div class="ph"><div><div class="pht">Birdie Board</div></div></div>
+          <div class="ptabs"><div class="ptab">My Board</div><div class="ptab">Brackets</div><div class="ptab on">Standings</div><div class="ptab">Heatmap</div></div>
+          <div class="pb">
+            <div class="plbr"><div class="plbrk">1</div><div class="plbn"><div class="plbnn">El Condor Grande</div><div class="plbnk">Jake</div></div><div class="plbsc">16/18</div><div class="plbbw"><div class="plbbf" style="height:88%;background:#c8a44a"></div></div></div>
+            <div class="plbr me"><div class="plbrk" style="color:#52cc5a">2</div><div class="plbn"><div class="plbnn" style="color:#52cc5a">The Fairway Phantom</div><div class="plbnk">Michael (you)</div></div><div class="plbsc" style="color:#52cc5a">13/18</div><div class="plbbw"><div class="plbbf" style="height:72%"></div></div></div>
+            <div class="plbr"><div class="plbrk">3</div><div class="plbn"><div class="plbnn">Captain Clutch</div><div class="plbnk">Dave</div></div><div class="plbsc">12/18</div><div class="plbbw"><div class="plbbf" style="height:66%;background:#a09070"></div></div></div>
+            <div class="plbr"><div class="plbrk">4</div><div class="plbn"><div class="plbnn">Wild Bill Wedge</div><div class="plbnk">Tom</div></div><div class="plbsc">10/18</div><div class="plbbw"><div class="plbbf" style="height:55%;background:#4a6a4a"></div></div></div>
+            <div class="plbr"><div class="plbrk">5</div><div class="plbn"><div class="plbnn">Three-Putt Terrance</div><div class="plbnk">Sam</div></div><div class="plbsc">8/18</div><div class="plbbw"><div class="plbbf" style="height:44%;background:#4a6a4a"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cps" id="comps">
+  <div class="cpi">
+    <div style="text-align:center" class="rev"><div class="seye">Three Ways to Win</div><h2 class="sti">The <i>Competitions</i></h2><p class="sbd" style="margin:0 auto;text-align:center">Prizes for all three confirmed on draw night. Season runs from first round to last.</p></div>
+    <div class="cpg">
+      <div class="cpc c1 rev d1"><div class="cicon">&#9971;</div><div class="ctit">The Bracket</div><p class="cdesc">Split into 4 handicap brackets. Head-to-head for the whole season. First to birdie all 18 holes at Revelstoke wins.</p><span class="cpill pg">4 Bracket Winners</span></div>
+      <div class="cpc c2 rev d2"><div class="cicon">&#128226;</div><div class="ctit">Net Birdie Board</div><p class="cdesc">Handicap-adjusted. A net birdie is a par score on a stroke hole. Levels the playing field &mdash; any handicap can compete.</p><span class="cpill pa">Separate Prize</span></div>
+      <div class="cpc c3 rev d3"><div class="cicon">&#127881;</div><div class="ctit">Side Comp</div><p class="cdesc">Format voted on during sign-up. Hole Hunter, Hot Hand, Skins Bank, Streak Wars &mdash; the group decides.</p><span class="cpill pp2">Group Vote</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="nks">
+  <div class="nki">
+    <div class="nkrow">
+      <div>
+        <div class="seye rev d1">AI-Generated Nicknames</div>
+        <h2 class="sti rev d2">Every player gets<br/><i>a ridiculous name.</i></h2>
+        <p class="sbd rev d3">The moment you sign up, Claude generates a unique nickname based on your name and handicap &mdash; and a private roast explaining exactly why. Only you see the reason. The nickname shows everywhere else.</p>
+      </div>
+      <div class="rev d2">
+        <div class="nkcard">
+          <div class="nklbl">Your Birdie Board Nickname</div>
+          <div class="nkname" id="nkname">The Fairway Phantom</div>
+          <div class="nkdiv"></div>
+          <div class="nkwhy">Only you can see this</div>
+          <div class="nkreason" id="nkreason">"Michael. HCP 12.4. You reliably disappear for three weeks then reappear with four birdies like nothing happened. We considered several options. This one fits."</div>
+          <div class="nkai">Generated by Claude AI &middot; Unique to every player</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fts" id="feats">
+  <div class="fti">
+    <div style="text-align:center" class="rev"><div class="seye">Everything in the App</div><h2 class="sti">Serious competition.<br/><i>Questionable golf.</i></h2><p class="sbd" style="margin:0 auto 0;text-align:center">We take birdies very seriously.</p></div>
+    <div class="ftg">
+      <div class="fti2 rev d1"><div class="ftic">&#128241;</div><div><div class="ftit">Add to Home Screen</div><p class="ftd">Works like a native app on iPhone and Android. No app store &mdash; just open in Safari or Chrome and add to your home screen in seconds.</p></div></div>
+      <div class="fti2 rev d2"><div class="ftic">&#9998;</div><div><div class="ftit">Hole-by-Hole Scorecard</div><p class="ftd">Enter your score per hole. Birdies, net birdies and eagles detected automatically &mdash; no manual selection needed.</p></div></div>
+      <div class="fti2 rev d3"><div class="ftic">&#127922;</div><div><div class="ftit">Live Draw Night</div><p class="ftd">Admin splits players into brackets, hits Randomise, and pairs appear live. Lock it in &mdash; the draw is permanent from that moment.</p></div></div>
+      <div class="fti2 rev d4"><div class="ftic">&#128203;</div><div><div class="ftit">Share to Messenger</div><p class="ftd">One tap after logging a round generates a pre-written message. Copy and paste into the group chat. Message adapts based on how many birdies you got.</p></div></div>
+      <div class="fti2 rev d1"><div class="ftic">&#128197;</div><div><div class="ftit">Who's Playing</div><p class="ftd">Post your availability with a time window and note. See who else is heading out &mdash; no more group messages asking if anyone fancies a round.</p></div></div>
+      <div class="fti2 rev d2"><div class="ftic">&#127797;</div><div><div class="ftit">Hole Difficulty Heatmap</div><p class="ftd">See which holes the group is struggling on. Red means nobody has cracked it yet. Very satisfying when it turns green.</p></div></div>
+      <div class="fti2 rev d3"><div class="ftic">&#128293;</div><div><div class="ftit">Hot Streaks</div><p class="ftd">Most birdies in a single round, who is the hot hand this week, season-long stats. The leaderboard has opinions.</p></div></div>
+      <div class="fti2 rev d4"><div class="ftic">&#128202;</div><div><div class="ftit">Net Birdie Board</div><p class="ftd">Handicap-adjusted tracking runs in parallel. Stroke holes highlighted in gold. Separate leaderboard for the net competition.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="hws" id="how">
+  <div class="hwi">
+    <div class="rev"><div class="seye">Getting Started</div><h2 class="sti">Up and running<br/><i>in four steps.</i></h2></div>
+    <div class="hwst">
+      <div class="hwsi rev d1"><div class="hwsn">1</div><div class="hwsit">Sign Up</div><p class="hwsid">Name, password and handicap index. Get your AI nickname. Vote on the side comp. Takes 2 minutes.</p></div>
+      <div class="hwsi rev d2"><div class="hwsn">2</div><div class="hwsit">Get Approved</div><p class="hwsid">Admin confirms your place. You are in the app and on the leaderboard.</p></div>
+      <div class="hwsi rev d3"><div class="hwsn">3</div><div class="hwsit">Draw Night</div><p class="hwsid">Brackets drawn live at the pub. Head-to-head matchup locked in. Prizes confirmed on the night.</p></div>
+      <div class="hwsi rev d4"><div class="hwsn">4</div><div class="hwsit">Play Golf</div><p class="hwsid">Log rounds after you play. Chase your 18 holes. Keep an eye on your bracket opponent.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ctasec" id="signup">
+  <div class="ctabg">&#9971;</div>
+  <h2 class="ctatit rev">Ready to<br/><i>Birdie</i> all 18?</h2>
+  <p class="ctasub rev d1">Revelstoke Golf Club &middot; Season 2026 &middot; Prizes confirmed on draw night</p>
+  <a href="/app" class="btng rev d2" style="font-size:15px;padding:18px 48px">Sign Up for Birdie Board 2026</a>
+  <p class="ctanote rev d3">Free to join &middot; Works on any phone &middot; No app download required</p>
+</section>
+
+<footer>
+  <div class="flogo">Birdie <b>Board</b> 2026</div>
+  <div class="fcopy">Revelstoke Golf Club &middot; Built with a lot of blind faith</div>
+</footer>
+
+<script>
+var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('show');});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rev').forEach(function(el){obs.observe(el);});
+function cnt(el,t,d){var s=null;function st(ts){if(!s)s=ts;var p=Math.min((ts-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*t);if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st);}
+var co=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){cnt(document.getElementById('c1'),14,1600);cnt(document.getElementById('c2'),127,2000);cnt(document.getElementById('c3'),31,1400);co.disconnect();}});},{threshold:0.5});
+var se=document.querySelector('.hstats');if(se)co.observe(se);
+var bh=[1,3,4,6,7,9,10,12,14,15,17],eg=[10],gr=document.getElementById('hgrid');
+if(gr){for(var i=1;i<=18;i++){var c=document.createElement('div');c.className='hc';var ie=eg.indexOf(i)>-1,ib=bh.indexOf(i)>-1;if(ie){c.innerHTML='<span style="font-size:5px">H'+i+'</span><span class="hi">&#129345;</span>';(function(cc,ii){setTimeout(function(){cc.classList.add('eg');},ii*70+400);})(c,i);}else if(ib){c.innerHTML='<span style="font-size:5px">H'+i+'</span><span class="hi">&#127796;</span>';(function(cc,ii){setTimeout(function(){cc.classList.add('dn');},ii*70+400);})(c,i);}else{c.innerHTML='<span style="font-size:5px">H'+i+'</span><span style="font-size:7px;color:#1c3820">o</span>';}gr.appendChild(c);}}
+var nks=[{n:'The Fairway Phantom',r:'"Michael. HCP 12.4. You reliably disappear for three weeks then reappear with four birdies like nothing happened. This name chose itself."'},{n:'Captain Three-Putt',r:'"Sam. HCP 18.2. The name came to us instantly. We tried to find a more flattering angle. We could not."'},{n:'El Condor Grande',r:'"Jake. HCP 6.1. At a 6 handicap you should be making eagles. We are holding you to it."'},{n:'The Green Reaper',r:'"Dave. HCP 22.4. Every green trembles when you arrive. Unfortunately so does your putting."'},{n:'Wild Bill Wedge',r:'"Tom. HCP 15.8. Your wedge game is either extraordinary or catastrophic. Never in between."'}];
+var ni=0,nn=document.getElementById('nkname'),nr=document.getElementById('nkreason');
+if(nn&&nr){setInterval(function(){ni=(ni+1)%nks.length;nn.style.opacity=nr.style.opacity='0';setTimeout(function(){nn.textContent=nks[ni].n;nr.textContent=nks[ni].r;nn.style.transition=nr.style.transition='opacity 0.5s';nn.style.opacity=nr.style.opacity='1';},420);},3400);}
+window.addEventListener('scroll',function(){document.getElementById('nav').classList[window.scrollY>60?'add':'remove']('scrolled');},{passive:true});
+</script>
+</body>
+</html>
